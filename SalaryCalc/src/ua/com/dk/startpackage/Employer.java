@@ -1,5 +1,7 @@
 package ua.com.dk.startpackage;
 
+import java.util.Scanner;
+
 public class Employer {
 	private String name; 
 	private String position;
@@ -7,7 +9,7 @@ public class Employer {
 	private Salary salary;
 	
 	public Employer() {
-		
+		consoleEnterData();
 	}
 	
 	public Employer(String n, String pos, int exp, Salary sal) {
@@ -22,9 +24,10 @@ public class Employer {
 	}
 
 	public void setName(String name) {
-		if (name != "Vasya") {
-		this.name = name;
+		if (name.equals("Vasya")) {
+		System.out.println("Мы вас поздравляем! Вы - Вася!");
 		}
+		this.name = name;
 	}
 
 	public String getPosition() {
@@ -73,8 +76,20 @@ public class Employer {
 		System.out.println("Name = " + getName());
 		System.out.println("Position = " + getPosition());
 		System.out.println("Expirients = " + getExpirients() + " years");
-		System.out.println("Salary = " + salary.getSize() + " UAH");
-
+		System.out.println("Salary = " + salary.getSize() + " UAH");	
+	}
+	
+	public void consoleEnterData() {
+		Scanner in = new Scanner(System.in);
+		System.out.println("Enter name");
+		this.setName(in.nextLine());
+		System.out.println("Enter position");
+		this.setPosition(in.nextLine());
+		System.out.println("Enter expirients");
+		this.setExpirients(in.nextInt());
+		System.out.println("Enter salary");
+		this.setSalary(new Salary(in.nextDouble()));
+		in.close();
 	}
 
 }
